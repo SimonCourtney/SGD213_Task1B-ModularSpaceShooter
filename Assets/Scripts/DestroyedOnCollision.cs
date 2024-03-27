@@ -28,12 +28,22 @@ public class DestroyedOnCollision : MonoBehaviour
         {
             // Destroy if it's a Blacklist and the tag IS in the Blacklist
             Destroy(gameObject);
+            if (gameObject.tag == "Player")
+            {
+                EndGame.instance.endGame();
+            }
+
+
         }
         else if (tagListType == TagListType.Whitelist 
             && !tagInList)
         {
             // Destroy if it's a Whitelist and the tag is NOT in the Whitelist
             Destroy(gameObject);
+            if (gameObject.tag == "Player")
+            {
+                Score.instance.changeScore(1);
+            }
         }
         else
         {
