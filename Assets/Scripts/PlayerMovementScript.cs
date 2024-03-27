@@ -19,9 +19,15 @@ public class PlayerMovementScript : MonoBehaviour
         ourRigidBody = GetComponent<Rigidbody2D>(); 
     }
 
-    public void HorizontalMovement(float HorizontalInput)
+    // Update is called once per frame
+    void Update() 
     {
-        Vector2 ForceToAdd = Vector2.right * HorizontalInput * playerAcceleration * Time.deltaTime;
-        ourRigidBody.AddForce(ForceToAdd);
-    }
+        float HorizontalInput = Input.GetAxis("Horizontal");
+
+        if (HorizontalInput != 0.0f) 
+        {
+            Vector2 ForceToAdd = Vector2.right*HorizontalInput*playerAcceleration*Time.deltaTime;
+            ourRigidBody.AddForce(ForceToAdd);
+        } 
+    } 
 }

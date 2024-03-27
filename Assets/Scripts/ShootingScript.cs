@@ -21,24 +21,26 @@ public class ShootingScript : MonoBehaviour
             + bullet.GetComponent<Renderer>().bounds.size.y / 2; // Plus half of the bullet size
     }
 
-    public void shoot()
+    // Update is called once per frame
+    void Update()
     {
-        float CurrentTime = Time.time;
-
-        // Have a delay so we don't shoot too many bullets
-        if (CurrentTime - lastFiredTime > fireDelay)
+        if (Input.GetButton("Fire1"))
         {
-            Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + bulletOffset);
+            float CurrentTime = Time.time;
 
-            Instantiate(bullet, spawnPosition, transform.rotation);
+            // Have a delay so we don't shoot too many bullets
+            if (CurrentTime - lastFiredTime > fireDelay)
+            {
+                Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + bulletOffset);
 
-            lastFiredTime = CurrentTime;
+                Instantiate(bullet, spawnPosition, transform.rotation);
+
+                lastFiredTime = CurrentTime;
+            }
+
+            //print("Shoot!");
         }
-
-        //print("Shoot!");
     }
-
-    
 
     /// <summary>
     /// SampleMethod is a sample of how to use abstraction by
