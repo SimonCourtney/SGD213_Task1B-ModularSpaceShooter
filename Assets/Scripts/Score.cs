@@ -10,7 +10,7 @@ public class Score : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI scoreText; // Variable to display score
 
-    private int score; // Variable to keep track of score
+    private static int score; // Variable to keep track of score
 
     // Start is called before the first frame update
     private void Start()
