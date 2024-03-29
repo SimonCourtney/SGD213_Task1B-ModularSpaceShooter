@@ -1,29 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using UnityEngine.SocialPlatforms.Impl;
 
+
+using UnityEngine;
+
+// This displays the 'Game Over!' text when player is destroyed
 public class EndGame : MonoBehaviour
 {
-    public GameObject endTextObject;
-    public static EndGame instance;
-    // Start is called before the first frame update
-    void Start()
-    {
-        endTextObject.SetActive(false);
-    }
 
+    // UI text to display 'Game Over!' text
+    public GameObject endTextObject;
+
+    // Endgame instance variable
+    public static EndGame instance;
+
+    
+    // Awake is called when the script is first loaded
     private void Awake()
     {
+
         if (instance == null)
         {
-            instance = this;
+
+            instance = this; // Attaches the script to instance
+
         }
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+
+        // Hides the 'Game Over!' text at the start of the game
+        endTextObject.SetActive(false);
+
+    }
+
+    // Called by DestroyedOnCollision
     public void endGame()
     {
+
+        // Displays the 'Game Over!' text when player is destroyed
         endTextObject.SetActive(true);
+
     }
 }

@@ -1,33 +1,43 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿
 
+using UnityEngine;
+
+// This moves the Player object: Left and Right
 public class PlayerMovementScript : MonoBehaviour 
 {
-            // SerializeField exposes this value to the Editor, but not to other Scripts!
-            // It is "pseudo public"
-            // HorizontalPlayerAcceleration indicates how fast we accelerate Horizontally
+
             [SerializeField]
-            private float playerAcceleration = 5000f;
+            private float playerAcceleration = 5000f; // Force to apply to player object
 
-            private Rigidbody2D ourRigidBody;
+            private Rigidbody2D ourRigidBody; // Rigidbody of the player object
 
-    // Use this for initialization
+    // Start is called before the first frame update
     void Start() 
     {
-        // Get OurRigidbodyComponent once at the start of the game and store a reference to it
-        // This means that we don't need to call GetComponent more than once! This makes our game faster. (GetComponent is SLOW)
+
+        /// Get and store the Rigidbody component of the enemy
         ourRigidBody = GetComponent<Rigidbody2D>(); 
+
     }
+
 
     // Update is called once per frame
     void Update() 
     {
-        float HorizontalInput = Input.GetAxis("Horizontal");
 
+        float HorizontalInput = Input.GetAxis("Horizontal"); // Gets input from controller
+
+        // Checks for input from player controls
         if (HorizontalInput != 0.0f) 
+
         {
+
+            // This defines the speed to apply to the player object
             Vector2 ForceToAdd = Vector2.right*HorizontalInput*playerAcceleration*Time.deltaTime;
+
+            // This addsforce to the Rigidbody to move the player object
             ourRigidBody.AddForce(ForceToAdd);
+
         } 
     } 
 }

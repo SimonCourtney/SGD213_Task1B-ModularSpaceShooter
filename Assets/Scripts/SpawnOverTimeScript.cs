@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿
+
+using UnityEngine;
 
 public class SpawnOverTimeScript : MonoBehaviour
 {
@@ -26,11 +27,15 @@ public class SpawnOverTimeScript : MonoBehaviour
         // Call the given function after spawnDelay seconds, 
         // and then repeatedly call it after spawnDelay seconds.
         InvokeRepeating("Spawn", spawnDelay, spawnDelay);
+
     }
 
+    // Gets object to appear on screen
     void Spawn()
     {
+
         float x1 = transform.position.x - ourRenderer.bounds.size.x / 2;
+
         float x2 = transform.position.x + ourRenderer.bounds.size.x / 2;
 
         // Randomly pick a point within the spawn object
@@ -38,5 +43,6 @@ public class SpawnOverTimeScript : MonoBehaviour
 
         // Spawn the object at the 'spawnPoint' position
         Instantiate(spawnObject, spawnPoint, Quaternion.identity);
+
     }
 }
