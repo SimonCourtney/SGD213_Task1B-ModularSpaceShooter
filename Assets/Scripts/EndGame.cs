@@ -9,22 +9,6 @@ public class EndGame : MonoBehaviour
     // UI text to display 'Game Over!' text
     public GameObject endTextObject;
 
-    // Endgame instance variable
-    public static EndGame instance;
-
-    
-    // Awake is called when the script is first loaded
-    private void Awake()
-    {
-
-        if (instance == null)
-        {
-
-            instance = this; // Attaches the script to instance
-
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {

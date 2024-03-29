@@ -7,7 +7,7 @@ public class ShootingScript : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject bullet; // Declares varible for bullet
+    private GameObject bullet; // Declares variable for bullet
 
     private float lastFiredTime = 0f; // Used to control firing rate
 
@@ -27,24 +27,20 @@ public class ShootingScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void FireWeapon()
     {
-        // Checks for input form player controller
-        if (Input.GetButton("Fire1"))
+        
+        float CurrentTime = Time.time; // Records time bullet was fired
+
+        // Have a delay so we don't shoot too many bullets
+        if (CurrentTime - lastFiredTime > fireDelay)
         {
+            // Ensure bullet appears in front of player object
+            Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + bulletOffset);
 
-            float CurrentTime = Time.time; // Records time bullet was fired
+            Instantiate(bullet, spawnPosition, transform.rotation); // Creates bullet
 
-            // Have a delay so we don't shoot too many bullets
-            if (CurrentTime - lastFiredTime > fireDelay)
-            {
-                // Ensure bullet appears in front of player object
-                Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + bulletOffset);
-
-                Instantiate(bullet, spawnPosition, transform.rotation); // Creates bullet
-
-                lastFiredTime = CurrentTime; // Records time bullet was fired
-            }
+            lastFiredTime = CurrentTime; // Records time bullet was fired
         }
     }
 }

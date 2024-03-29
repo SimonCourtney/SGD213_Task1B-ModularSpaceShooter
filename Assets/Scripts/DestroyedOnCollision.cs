@@ -21,6 +21,20 @@ public class DestroyedOnCollision : MonoBehaviour
     [SerializeField]
     private List<string> tags;
 
+    private Score score; // Sets script as variable type
+
+    private EndGame endGame; // Sets script as variable type
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+        score = FindObjectOfType<Score>(); // Assigns script to a variable
+
+        endGame = FindObjectOfType<EndGame>(); // Assigns script to a variable
+
+    }
+
     // Detects if there is a collision
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -39,7 +53,7 @@ public class DestroyedOnCollision : MonoBehaviour
             {
 
                 // This displays the 'Game Over!' text when player is destroyed
-                EndGame.instance.endGame();
+                endGame.endGame();
 
             }
 
@@ -55,7 +69,7 @@ public class DestroyedOnCollision : MonoBehaviour
             {
 
                 // This adds 1 to the score when an enemy is destroyed
-                Score.instance.changeScore(1); 
+                score.changeScore(1); 
 
             }
         }
