@@ -35,12 +35,14 @@ public class ShootingScript : MonoBehaviour
         // Have a delay so we don't shoot too many bullets
         if (CurrentTime - lastFiredTime > fireDelay)
         {
+
             // Ensure bullet appears in front of player object
             Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + bulletOffset);
 
             Instantiate(bullet, spawnPosition, transform.rotation); // Creates bullet
 
             lastFiredTime = CurrentTime; // Records time bullet was fired
+
         }
     }
 }

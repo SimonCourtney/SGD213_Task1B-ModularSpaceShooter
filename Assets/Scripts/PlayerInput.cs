@@ -29,6 +29,7 @@ public class PlayerInput : MonoBehaviour
         // Checks for input from player left/right controls
         if (HorizontalInput != 0.0f)
         {
+
             playerMovementScript.MovePlayer(HorizontalInput); // Moves player object left and right
             
         }
